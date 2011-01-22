@@ -149,7 +149,7 @@ list.push('0230_loose.html');
 list.push('0240_method.html');
 list.push('0250_apply.html');
 list.push('0260_constructor.html');
-list.push('0270_oops _question.html');
+list.push('0270_oops_question.html');
 list.push('0275_oops_answer.html');
 list.push('0280_just_dont.html');
 list.push('0290_brackets_question.html');

@@ -124,7 +124,6 @@ presentation.slides = (function ($) {
       //awesomeness//
 list.push('0000_first_page.html');
 list.push('0010_doug_crockford_quote_1.html');
-list.push('0020_fyi.html');
 list.push('0030_bad_ruby_code.html');
 list.push('0040_bad_js_code.html');
 list.push('0050_why.html');
@@ -189,7 +188,7 @@ list.push('0560_code_1.html');
 list.push('0570_code_2.html');
 list.push('0580_bad_ruby_code.html');
 list.push('0590_better_ruby_code.html');
-list.push('0600_bad_js_code - Copy.html');
+list.push('0600_bad_js_code.html');
 list.push('0610_better_js_code.html');
 list.push('0620_must_read.html');
 list.push('0900_questions.html');

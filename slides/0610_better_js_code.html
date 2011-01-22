@@ -1,0 +1,23 @@
+<pre class="prettyprint small">
+var lw = {};
+lw.person = function (params) {
+    var that = {age: params.age, name: params.name};
+    return {
+      name: function () {return that.name;},
+      isLegal: function () {return that.age >= 18;}
+    };
+};
+lw.people = (function () {
+    var everyone = [
+        lw.person({name: "John Doe", age: 16}),
+        lw.person({name: "Billy Joe", age: 30})
+    ];
+    return {    
+      findByName: function (name) {
+        return $.grep(everyone, function (p) {
+            return p.name() == name;
+        })[0];
+      }
+    };
+}());
+</pre>

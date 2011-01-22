@@ -1,0 +1,18 @@
+<pre class="prettyprint not_so_small">
+"use strict";
+var jsPresentation = (function ($) {
+  var secret = { slides: [], currentIndex: 0 }, api = {};
+
+  // initialization code that is independent from the DOM
+
+  $(function () { /*show first slide on the screen*/ });
+
+  api.currentSlide = function () {
+    return secret.slides[secret.currentIndex];
+  };
+  api.nextSlide = function () {
+    secret.currentIndex += 1;
+  };
+  return api;
+}(jQuery));
+</pre>

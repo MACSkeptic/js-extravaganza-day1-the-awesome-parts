@@ -1,0 +1,44 @@
+<div class="dual_code">
+<pre class="prettyprint">
+@people_ages = [
+  { name: "John Doe", age: 16 },
+  { name: "Billy Joe", age: 30 }
+]
+
+def chkIsMajor(prsn_name)
+  p = find_person prsn_name
+  p[:age] >= 18
+end
+
+def find_person name
+  (@people_ages.select do |x| 
+    x[:name].eql? name 
+  end).first
+end
+
+puts chkIsMajor(ARGV[0])
+# $> ruby legal_person.rb "John Doe" 
+#    => false 
+# $> ruby legal_person.rb "Billy Joe" 
+#    => true 
+</pre>
+<pre class="prettyprint">
+var people_ages = [
+  { name: "John Doe", age: 16 },
+  { name: "Billy Joe", age: 30 }
+];
+
+function chkIsMajor(prsn_name)
+{
+    var p = find_person(prsn_name);
+    return p.age >= 18;
+}
+
+function find_person(name) {
+  desired_name = name;
+  return $.grep(people_ages, function(p) {
+      return p.name == desired_name;
+  })[0];
+}
+</pre>
+</div>

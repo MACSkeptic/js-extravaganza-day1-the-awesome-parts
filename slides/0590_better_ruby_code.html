@@ -1,0 +1,24 @@
+<pre class="prettyprint small">
+class Person
+  attr_reader :name
+
+  def initialize(params)
+    @name, @age = params[:name], params[:age]
+  end
+
+  def is_legal?
+    @age >= 18
+  end
+end
+
+class People
+  @@everyone = [
+    Person.new(name: "John Doe", age: 16),
+    Person.new(name: "Billy Joe", age: 30)
+  ]
+
+  def self.find_by_name(name)
+    @@everyone.select { |p| p.name.eql? name }.first
+  end
+end
+</pre>

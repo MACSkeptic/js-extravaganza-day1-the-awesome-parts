@@ -1,0 +1,26 @@
+﻿<div class="dual_code bigger">
+  <pre class="prettyprint green">
+  // javascript
+  
+  if (true) { 
+    (function () {
+      var x = 10; 
+    }());
+  }
+
+  alert(x);
+  // undefined
+  </pre>
+  <pre class="prettyprint red">
+  // javascript
+
+  if (true) { 
+    (function () {
+      x = 10; 
+    }());
+  }
+
+  alert(x);
+  // 10
+  </pre>
+</div>

@@ -1,0 +1,19 @@
+<pre class="prettyprint">
+@people_ages = [
+  { name: "John Doe", age: 16 },
+  { name: "Billy Joe", age: 30 }
+]
+
+def chkIsMajor(prsn_name)
+  p = find_person prsn_name
+  p[:age] >= 18
+end
+
+def find_person name
+  @people_ages.select { |x| x[:name].eql? name }.first
+end
+
+puts chkIsMajor(ARGV[0])
+# $> ruby legal_person.rb "John Doe" => false 
+# $> ruby legal_person.rb "Billy Joe" => true 
+</pre>

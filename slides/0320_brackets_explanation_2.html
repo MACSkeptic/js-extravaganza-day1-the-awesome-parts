@@ -1,0 +1,20 @@
+﻿<div class="dual_code bigger brackets">
+  <pre class="prettyprint">
+  function foo() 
+  {
+    return
+    {
+      bar: 42
+    };
+  }
+  </pre>
+  <pre class="prettyprint">
+  function foo() 
+  {
+    return; 
+    <strong>{</strong> //treated 
+      bar: 42; 
+    <strong>}</strong>; //as a block
+  }
+  </pre>
+</div>

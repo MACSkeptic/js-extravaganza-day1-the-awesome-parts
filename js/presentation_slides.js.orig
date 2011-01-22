@@ -1,0 +1,277 @@
+"use strict";
+
+var presentation = presentation || {};
+
+presentation.slides = (function ($) {
+  var index = -1,
+      list = [],
+      hideEffects = ["hide", "fadeOut", "slideUp"],
+      showEffects = ["show", "fadeIn", "slideDown"],
+      cachedContainer = null;
+
+  function random() {
+    return Math.floor(Math.random() * hideEffects.length);
+  }
+
+  function findContainer() {
+    cachedContainer = cachedContainer || $('#slide_container');
+    return cachedContainer;
+  }
+
+  function show() {
+    var elem = findContainer();
+    elem[showEffects[random()]]('fast', function () {
+      function makeItPretty() {
+        prettyPrint();
+        if(elem.has('div.nooo').length > 0) {
+          elem.addClass('nooo');
+        }
+        if(elem.has('pre.prettyprint').length > 0) {
+          elem.addClass('code');
+        }
+        $('#slides').val(index + '');
+        window.location.hash = index+"";
+      }
+
+      var code = $('pre.prettyprint[source]');
+      if(code.length > 0) {
+        code.load('src/' + code.attr('source'), null, makeItPretty);
+      } else {
+        makeItPretty();
+      }
+    });
+  }
+
+  function current() {
+    return 'slides/' + list[index];
+  }
+
+  function loadThen(callback) {
+    return function () { 
+      findContainer().load(current(), null, callback);  
+    };
+  }
+
+  function hideThen(callback) {
+    var elem = findContainer();
+    elem.removeClass('nooo').removeClass('code');
+    elem[hideEffects[random()]]('fast', callback);
+  }
+
+  function render() {
+    hideThen(loadThen(show));
+  }
+
+  function findFirstSlide() {
+    return 0;
+  }
+  
+  function findLastSlide() {
+    return (list.length - 1);
+  }
+  
+  function isFewerThanFirstSlide(i) {
+    return (i <= findFirstSlide());
+  }
+  
+  function isHigherThanLastSlide(i) {
+    return (i > findLastSlide());
+  }
+
+  function goToIndex (i) {
+    var currentSlide = index;
+    index = (isFewerThanFirstSlide(i) ? 
+      findFirstSlide() : 
+      (isHigherThanLastSlide(i) ? 
+        findLastSlide() : 
+        i) 
+    );
+    
+    if (currentSlide !== index) {
+      render();
+    }
+  }
+
+  function goToNextSlide() {
+    goToIndex(index + 1);
+  }
+  
+  function goToPreviousSlide() {
+    goToIndex(index - 1);
+  }
+  
+  function goToFirstSlide() {
+    goToIndex(findFirstSlide());
+  }
+  
+  function goToLastSlide() {
+    goToIndex(findLastSlide());
+  }
+  
+  function bindKeyDownEvents () {
+    $('#show, #hide').
+      bind('keydown', function (e) {
+      if(e.keyCode === 37) {
+        goToPreviousSlide();
+      }
+      if(e.keyCode === 39) {
+        goToNextSlide();
+      }
+      e.stopPropagation();
+      return false;
+    });
+  }
+
+  return { 
+    initialize: function () {
+//awesomeness//
+list.push('0010_first_page.html');
+list.push('0020_matz_quote.html');
+list.push('0030_what_is_metaprogramming.html');
+list.push('0040_but_first_ruby.html');
+list.push('0050_ghost_town.html');
+list.push('0060_market_place.html');
+list.push('0070_open_classes.html');
+list.push('0080_open_classes_2.html');
+list.push('0090_classes_are_objects.html');
+list.push('0100_reserved_words_methods.html');
+list.push('0110_real_keywords.html');
+list.push('0120_classes_modules.html');
+list.push('0130_instance_variables.html');
+list.push('0140_class_variables.html');
+list.push('0150_class_methods.html');
+list.push('0160_singleton_methods.html');
+list.push('0170_static_variables.html');
+list.push('0180_static_variables_2.html');
+list.push('0190_static_variables_3.html');
+list.push('0200_private_stuff.html');
+list.push('0210_quacks_like_a_duck.html');
+list.push('0220_self.html');
+list.push('0230_meta_definition.html');
+list.push('0240_really_dry.html');
+list.push('0250_really_dry_2.html');
+list.push('0260_really_dry_3.html');
+list.push('0270___methods.html');
+list.push('0280_method_missing.html');
+list.push('0290_eval_is_evil.html');
+list.push('0300_evil_is_awesome.html');
+list.push('0600_klunk.html');
+list.push('0610_joel_santana.html');
+list.push('0615_module_namespace.html');
+list.push('0620_lazy_instance.html');
+list.push('0630_lazy_instance.html');
+list.push('0640_tap_method.html');
+list.push('0650_tap_method.html');
+list.push('0660_tap_method.html');
+list.push('0780_hook_methods.html');
+list.push('0790.hook_methods.html');
+list.push('0799_scope_gates.html');
+list.push('0800_scope_gates.html');
+list.push('0810_flat_scope.html');
+list.push('0820_flat_scope.html');
+list.push('0830_flat_scope.html');
+list.push('0840_blank_slate.html');
+list.push('0845_blank_slate.html');
+list.push('0850_blank_slate.html');
+list.push('0855_blank_slate.html');
+list.push('0856_blank_slate.html');
+list.push('0860_symbol_to_proc.html');
+list.push('0870_string_to_code.html');
+list.push('0880_string_to_code.html');
+list.push('0890_book.html');
+list.push('0999_questions.html');
+list.push('0010_first_page.html');
+list.push('0020_matz_quote.html');
+list.push('0030_what_is_metaprogramming.html');
+list.push('0040_but_first_ruby.html');
+list.push('0050_ghost_town.html');
+list.push('0060_market_place.html');
+list.push('0069_open_classes.html');
+list.push('0070_open_classes.html');
+list.push('0080_open_classes_2.html');
+list.push('0089_classes_are_objects.html');
+list.push('0090_classes_are_objects.html');
+list.push('0100_reserved_words_methods.html');
+list.push('0110_real_keywords.html');
+list.push('0120_classes_modules.html');
+list.push('0129_instance_variables.html');
+list.push('0130_instance_variables.html');
+list.push('0139_class_variables.html');
+list.push('0140_class_variables.html');
+list.push('0149_class_methods.html');
+list.push('0150_class_methods.html');
+list.push('0159_singleton_methods.html');
+list.push('0160_singleton_methods.html');
+list.push('0169_static_variables.html');
+list.push('0170_static_variables.html');
+list.push('0180_static_variables_2.html');
+list.push('0190_static_variables_3.html');
+list.push('0195_self.html');
+list.push('0199_private_stuff.html');
+list.push('0200_private_stuff.html');
+list.push('0210_quacks_like_a_duck.html');
+list.push('0230_meta_definition.html');
+list.push('0232_meta_meta.html');
+list.push('0239_really_dry.html');
+list.push('0240_really_dry.html');
+list.push('0250_really_dry_2.html');
+list.push('0260_really_dry_3.html');
+list.push('0270___methods.html');
+list.push('0280_method_missing.html');
+list.push('0290_eval_is_evil.html');
+list.push('0300_evil_is_awesome.html');
+list.push('0600_klunk.html');
+list.push('0610_joel_santana.html');
+list.push('0615_module_namespace.html');
+list.push('0620_lazy_instance.html');
+list.push('0630_lazy_instance.html');
+list.push('0640_tap_method.html');
+list.push('0650_tap_method.html');
+list.push('0660_tap_method.html');
+list.push('0780_hook_methods.html');
+list.push('0790.hook_methods.html');
+list.push('0799_scope_gates.html');
+list.push('0800_scope_gates.html');
+list.push('0810_flat_scope.html');
+list.push('0820_flat_scope.html');
+list.push('0830_flat_scope.html');
+list.push('0840_blank_slate.html');
+list.push('0845_blank_slate.html');
+list.push('0850_blank_slate.html');
+list.push('0855_blank_slate.html');
+list.push('0856_blank_slate.html');
+list.push('0860_symbol_to_proc.html');
+list.push('0870_string_to_code.html');
+list.push('0880_string_to_code.html');
+//awesomeness//
+    },
+    first: function () {
+      goToFirstSlide();
+    },
+    next: function () {
+      goToNextSlide();
+    },
+    previous: function () {
+      goToPreviousSlide();
+    },
+    last: function() {
+      goToLastSlide();
+    },
+    goTo: function(i) {
+      goToIndex(parseInt(parseInt(i)));
+    },
+    present: function () {
+      $.each(list, function(i, value) {   
+        $('#slides').
+          append($("<option></option>").
+          attr("value", i).
+          text('[' + i + '] ' + value)); 
+      });
+      $('#slides').bind('change', function () {
+        goToIndex(parseInt($(this).val(), 10));
+        return false;
+      });
+      bindKeyDownEvents();
+    }
+  };
+}(jQuery));

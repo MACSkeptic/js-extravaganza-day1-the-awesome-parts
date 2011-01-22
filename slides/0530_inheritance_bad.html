@@ -1,0 +1,47 @@
+<pre class="prettyprint bigger">
+function Foo() {
+  this.bar = function () {/*_*/};
+  this.answer = 0; // this => Foo.prototype
+}
+Foo.prototye.desc = "...";
+
+var foo = new Foo();
+foo.answer = 42;
+</pre>
+<div class="tables">
+<table class="object left">
+  <thead>
+    <tr>
+      <th>foo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>answer=42</td>
+    </tr>
+    <tr>
+      <td>
+        <span class="arrow">=======&gt;</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="object right">
+  <thead>
+    <tr>
+      <th class="small">Foo.prototype</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>answer=0</td>
+    </tr>
+    <tr>
+      <td>desc="..."</td>
+    </tr>
+    <tr>
+      <td>bar=fn</td>
+    </tr>
+  </tbody>
+</table>
+</div>

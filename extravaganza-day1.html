@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title>Metaprogramming Ruby</title>
+
+    <!-- CODE HIGHLIGHT -->
+    <link rel="stylesheet" href="css/prettify.css" type="text/css">
+
+    <!-- MINE -->
+    <link rel="stylesheet" href="css/presentation.css" type="text/css">
+
+    <!-- JQUERY -->
+    <link rel="stylesheet" href="css/black-tie/jquery-ui-1.8.1.custom.css" type="text/css">
+
+    <!-- JQUERY -->
+    <script src="js/jquery-1.4.2.min.js"></script>
+    <script src="js/jquery-ui-1.8.1.custom.min.js"></script>
+
+    <!-- CODE HIGHLIGHT -->
+    <script src="js/prettify.js"></script>
+
+    <!-- MINE -->
+    <script src="js/presentation_slides.js"></script>
+    <script src="js/presentation_buttons.js"></script>
+    <script src="js/presentation_engine.js"></script>
+    <script src="js/presentation_helpers.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        var index = window.location.hash;
+        index && presentation.slides.goTo(index.replace("#", ""));
+        
+        function toggle(e) {
+          $("#toolbar").toggle();
+          $("#show").toggle();
+          e.preventDefault()
+        }
+        
+        $("#show").hide();
+        $("#hide, #show").click(toggle);
+        $("#hide").click();
+        $("#show").focus();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="centralizer">
+      <span id="toolbar" class="ui-corner-all">
+        <button id="beginning" action="first" class="jquery_button" icon="start">go to beginning</button>
+        <button id="rewind" action="previous" class="jquery_button" icon="prev">previous</button>
+        <button id="forward" action="next" class="jquery_button" icon="next">next</button>
+        <button id="end" action="last" class="jquery_button" icon="end">go to end</button>
+        <select id="slides"></select>
+        <a href="#" id="hide">hide &gt;&gt;</a>
+      </span>
+      <a href="#" id="show">&lt;&lt; show</a>
+      <div id="slide_container">
+      </div>
+    </div>
+  </body>
+</html>

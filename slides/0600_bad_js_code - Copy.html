@@ -1,0 +1,19 @@
+<pre class="prettyprint">
+var people_ages = [
+  { name: "John Doe", age: 16 },
+  { name: "Billy Joe", age: 30 }
+];
+
+function chkIsMajor(prsn_name)
+{
+    var p = find_person(prsn_name);
+    return p.age >= 18;
+}
+
+function find_person(name) {
+  desired_name = name;
+  return $.grep(people_ages, function(p) {
+      return p.name == desired_name;
+  })[0];
+}
+</pre>

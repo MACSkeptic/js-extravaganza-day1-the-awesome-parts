@@ -1,0 +1,40 @@
+<pre class="prettyprint bigger">
+function useAsPrototype(original) {
+  function F() {}
+  F.prototype = original;
+  return new F();
+}
+var x = { prop: 'foo', method: function () {}};
+var y = useAsPrototype(x);
+</pre>
+<div class="tables">
+<table class="object left">
+  <thead>
+    <tr>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span class="arrow">=======&gt;</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="object right">
+  <thead>
+    <tr>
+      <th>x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>foo='bar'</td>
+    </tr>
+    <tr>
+      <td>method=fn</td>
+    </tr>
+  </tbody>
+</table>
+</div>

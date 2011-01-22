@@ -1,0 +1,14 @@
+<pre class="prettyprint bigger">
+function Person() {
+  this.name = "John";
+  this.sayGoodbye = function () {/*...*/};
+  return this;
+}
+
+Person.prototype.sayHello = function () {
+  // ... 
+};
+
+var p = new Person();
+p.sayHello();
+</pre>

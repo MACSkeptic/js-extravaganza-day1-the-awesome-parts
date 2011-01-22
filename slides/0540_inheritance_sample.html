@@ -1,0 +1,16 @@
+<pre class="prettyprint">
+var basicWidget = {
+  name: 'no name given',
+  show: function () { alert(this.name); }
+};
+
+var myWidget = useAsPrototype(basicWidget);
+
+myWidget.name = 'my widget';
+
+basicWidget.show();     // 'no name given'
+myWidget.show();        // 'my widget'
+
+delete(myWidget.name);
+myWidget.show();        // 'no name given'
+</pre>

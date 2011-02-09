@@ -123,6 +123,7 @@ presentation.slides = (function ($) {
     initialize: function () {
       //awesomeness//
 list.push('0000_first_page.html');
+list.push('0001_first_page.html');
 list.push('0010_doug_crockford_quote_1.html');
 list.push('0030_bad_ruby_code.html');
 list.push('0040_bad_js_code.html');
